@@ -35,14 +35,14 @@ myApp.controller( 'WhereMyPeeps', [ '$http', function( $http ){
   };
 
   vm.deleteRecord = function ( id ){
-    var objectToDelete = {
-      _id: id
-    };
 
+    console.log( 'Record _id to delete:', id );
     $http({
-
+      method: 'DELETE',
+      url: '/deleteRecord/' + id
     }).then( function ( response ) {
       console.log( response.statusText );
+      vm.getRecords();
     }, function myError( response ) {
       console.log( response.statusText );
     });

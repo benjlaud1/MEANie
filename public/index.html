@@ -15,7 +15,8 @@
     <input type="text" value="" ng-model="wmp.locationIn" placeholder="Location">
     <button ng-click='wmp.addRecord()'>Add</button>
     <button ng-click='wmp.getRecords()'>Read</button>
-    <h2 ng-repeat="peep in wmp.allTheRecords">{{peep.name}} is at {{peep.location}}</h2>
+    <h2 ng-repeat="peep in wmp.allTheRecords">{{peep.name}} is at {{peep.location}} <button ng-click="wmp.deleteRecord(peep._id)">Delete</button></h2>
+
   </div>
 </body>
 </html>

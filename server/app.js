@@ -43,5 +43,26 @@ app.post( '/testPost', function( req, res ){
   };
   // create new record
   var newRecord=ourModels( recordToAdd );
-  newRecord.save();
+  newRecord.save( function ( err ) {
+    if ( err ) {
+      console.log( err );
+      res.sendStatus( 500 );
+    } else {
+      console.log( 'Saved' );
+      res.sendStatus( 201 );
+    }
+  });
+});
+
+app.delete( '/deleteRecord/:id', function ( req, res ) {
+  console.log( 'Delete record:', req.params.id );
+  ourModels.remove( { _id: req.params.id }, function ( err ) {
+    if ( err ) {
+      console.log( err );
+      res.sendStatus( 500 );
+    } else {
+      console.log( 'successfully deleted' );
+      res.sendStatus( 200 );
+    }
+  });
 });
